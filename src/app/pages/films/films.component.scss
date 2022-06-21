@@ -1,0 +1,42 @@
+.film-container{
+  margin: 10px;
+  box-shadow: 5px 5px 15px 0px rgba(0,0,0,0.7);
+  font-family: 'Poller One', cursive;
+  background-color: rgba(255, 255, 255, 0.06);
+  border-radius: 20px;
+  color: yellow;
+}
+
+.film-table{
+  width: 100%;
+  font-family: 'Poller One', cursive;
+  background-color: transparent;
+}
+
+.mat-cell, th.mat-header-cell{
+  color: yellow;
+}
+
+.mat-column-episode {
+  width: 32px;
+  border-right: 1px solid yellow;
+  padding-right: 24px;
+  text-align: center;
+}
+
+.mat-column-title{
+  padding-left: 20px;
+}
+
+.mat-row{
+  cursor: pointer;
+}
+
+.opening-crawl{
+  text-align: justify;
+  text-justify: inter-word;
+}
+
+.grid{
+  border: 1px solid yellow !important;
+}

@@ -1,0 +1,30 @@
+
+<mat-drawer-container class="example-container">
+  <mat-drawer #drawer mode="side" opened class="drawer">
+    <mat-list class="list">
+      <mat-list-item
+        class="list-item"
+        (click)="openPage(menu)"
+        *ngFor="let menu of MENU_ITEMS"
+        matRipple
+        [matRippleCentered]="true"
+        >
+          {{menu.toUpperCase()}}
+      </mat-list-item>
+    </mat-list>
+  </mat-drawer>
+  <mat-drawer-content class="content">
+    <button
+      mat-button
+      *ngIf="screenWidth<500"
+      class="button"
+      (click)="drawer.toggle()"
+    >
+      <span class="material-symbols-outlined">
+        menu_open
+      </span>
+    </button>
+    <router-outlet></router-outlet>
+  </mat-drawer-content>
+</mat-drawer-container>
+<!--*ngIf="screenWidth<500"-->
