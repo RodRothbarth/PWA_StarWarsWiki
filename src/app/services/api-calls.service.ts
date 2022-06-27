@@ -11,50 +11,72 @@ export class ApiCallsService {
     private http: HttpClient
   ) { }
 
-  sideBarOptions(){
-    return this.http.get(`${environment.API_URL}`)
+  async sideBarOptions(){
+    try{
+      return this.http.get(`${environment.API_URL}`);
+    }catch (err: any){
+      return console.log('The data from side bar could not be retrieved', err.message)
+    }
+
   }
 
-  allFilmsCall(){
-    const FILMS = this.http.get(`${environment.API_URL}/films`)
-    console.log("Films!", FILMS)
-    return FILMS
+  async allFilmsCall(){
+    try{
+      const FILMS = await this.http.get(`${environment.API_URL}/films`)
+      // console.log("Films!", FILMS)
+      return FILMS
+    } catch (err: any){
+      return console.log('The data from films could not be retrieved', err.message)
+    }
   }
 
-  allPlanetsCall(){
-    const PLANETS = this.http.get(`${environment.API_URL}/planets`)
-    // console.log("Films!", PLANETS)
-    return PLANETS
+  async allPlanetsCall(){
+    try {
+      const PLANETS = await this.http.get(`${environment.API_URL}/planets`)
+      // console.log("Films!", PLANETS)
+      return PLANETS
+    } catch (err: any){
+      return console.log('The data from planets could not be retrieved', err.message)
+    }
   }
 
-  allPeopleCall(page:any){
-
-    const PEOPLE = this.http.get(`${environment.API_URL}/people/?page=${page+1}`)
-    console.log("PEOPLE ", PEOPLE)
-    return PEOPLE
+  async allPeopleCall(page:any){
+    try {
+      const PEOPLE = await this.http.get(`${environment.API_URL}/people/?page=${page + 1}`)
+      console.log("PEOPLE ", PEOPLE)
+      return PEOPLE
+    } catch (err: any){
+      return console.log('The data from people could not be retrieved', err.message)
+    }
   }
 
-  allPeopleCallTest(){
-    const PEOPLE = this.http.get(`${environment.API_URL}/people`)
-    console.log("PEOPLE ", PEOPLE)
-    return PEOPLE
+  async characterCall(char:string){
+    try {
+      const CHARACTER = await this.http.get(`${environment.API_URL}/people/${char}`)
+      // console.log("CHARACTERS", CHARACTERS)
+      return CHARACTER
+    } catch (err: any){
+      return console.log('The data from the character could not be retrieved', err.message)
+    }
   }
 
-  characterCall(char:string){
-    const CHARACTER = this.http.get(`${environment.API_URL}/people/${char}`)
-    // console.log("CHARACTERS", CHARACTERS)
-    return CHARACTER
+  async planetCall(planet: string){
+    try {
+      const PLANET = await this.http.get(`${environment.API_URL}/planets/${planet}`)
+      // console.log("PLANET", PLANETS)
+      return PLANET
+    } catch (err:any){
+      return console.log('The data from the planet could not be retrieved', err.message)
+    }
   }
 
-  planetCall(planet: string){
-    const PLANET = this.http.get(`${environment.API_URL}/planets/${planet}`)
-    // console.log("PLANET", PLANETS)
-    return PLANET
-  }
-
-  vehicleCall(vehicle: string){
-    const VEHICLE = this.http.get(`${environment.API_URL}/vehicles/${vehicle}`)
-    console.log("VEHICLE", VEHICLE)
-    return VEHICLE
+  async vehicleCall(vehicle: string){
+    try {
+      const VEHICLE = await this.http.get(`${environment.API_URL}/vehicles/${vehicle}`)
+      console.log("VEHICLE", VEHICLE)
+      return VEHICLE
+    } catch (err:any){
+      return console.log('The data from vehicles could not be retrieved', err.message)
+    }
   }
 }
